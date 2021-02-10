@@ -15,12 +15,13 @@ import "./navbar.less";
 const Navbar =  () => {
     return (
         <nav className="navbar">
+          <NavLink to="/">
             <motion.img 
             src={Logo} 
             initial={{ scale: 0 }}
             animate={{ rotate: 360, scale: 1 }}
             className="Logo" alt=""
-            />
+            /></NavLink>
         <Popover
   position={Position.BOTTOM_LEFT}
   content={
@@ -30,9 +31,6 @@ const Navbar =  () => {
       <Menu.Item icon={HomeIcon}>Home</Menu.Item>
       </NavLink>
       <Menu.Divider />
-      <NavLink to="/appointments">
-        <Menu.Item icon={PeopleIcon}>Appointments</Menu.Item>
-        </NavLink>
       </Menu.Group>
     </Menu>
   }
