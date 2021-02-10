@@ -1,0 +1,22 @@
+{
+  "name": "chatty",
+  "version": "1.1.0",
+  "private": "true",
+  "license": "MIT",
+  "scripts": {
+    "dev": "snowpack dev",
+    "build": "snowpack build",
+    "start": "serve build/"
+  },
+  "dependencies": {
+    "evergreen-ui": "^5.1.2",
+    "framer-motion": "^3.3.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
+    "serve": "^11.3.2",
+    "snowpack": "^3.0.11",
+    "snowpack-plugin-less": "^1.0.5"
+  }
+}
