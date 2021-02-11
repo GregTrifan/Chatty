@@ -2,6 +2,7 @@ import { Heading,Button,Pane,Text, TextInputField, Tooltip } from "evergreen-ui"
 import moment from "moment";
 import {motion} from "framer-motion";
 import React, {useState} from "react";
+import { Component } from "react";
 
 const Home = () => {
     const [content,setContent] = useState([]);
@@ -24,12 +25,13 @@ const Home = () => {
       <Pane
       border
       elevation={4}
+      borderRadius="12px"
       margin={24}
       justifyContent="center"
       alignItems="center"
       padding="20px"
       >
-    <Heading margin="default" size={600} color="dodgerblue">Send a Message</Heading>
+    <Heading margin="default" size={800} color="#05558C" className="cursive">Send a Message</Heading>
     <TextInputField
     isInvalid={invalid}
     value={msg}
@@ -44,8 +46,13 @@ const Home = () => {
    </Pane>
    <Heading>Received Messages</Heading>
 
-   {content.map(({content,time}) => {
+   {content.map(({content,time},index) => {
      return (
+       <motion.div
+      key={index}
+      initial={{ width:"0%",opacity:"0%" }}
+      animate={{ width:"100%",opacity:"100%" }}
+       >
      <Pane
      elevation={4}
      border
@@ -58,7 +65,9 @@ const Home = () => {
     <Tooltip content={moment(time).format('LTS')}>
      <Text>{content}</Text>
      </Tooltip>
-     </Pane>)
+     </Pane>
+     </motion.div>
+     )
    })}
    </motion.div>
     );
