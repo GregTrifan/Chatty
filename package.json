@@ -9,6 +9,7 @@
     "start": "serve build/"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "evergreen-ui": "^5.1.2",
     "faunadb": "^4.0.3",
     "framer-motion": "^3.3.0",
@@ -20,5 +21,8 @@
     "serve": "^11.3.2",
     "snowpack": "^3.0.11",
     "snowpack-plugin-less": "^1.0.5"
+  },
+  "devDependencies": {
+    "@snowpack/plugin-dotenv": "^2.0.5"
   }
 }

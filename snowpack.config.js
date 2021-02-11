@@ -5,7 +5,7 @@ module.exports = {
     },
     plugins: [[
         "snowpack-plugin-less",{javascriptEnable:true}
-    ]],
+    ],"@snowpack/plugin-dotenv"],
     "routes": [
         {"match": "routes", "src": ".*", "dest": "/index.html"}
     ]

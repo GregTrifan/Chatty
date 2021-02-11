@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import {Dialog, TextInputField,toaster} from "evergreen-ui";
+import {createUser} from "../../api";
+
 const Register = ({stats,close}) => {
     const [username,setUsername] = useState("");
     const [passwd,setPasswd] = useState("");
@@ -19,6 +21,11 @@ const Register = ({stats,close}) => {
             }
             return;
         }
+        const res = createUser({username:username,passwd:passwd})
+        .then(()=>toaster.success(`Account created sucessfully ${username}!!`))
+        .catch(() => toaster.danger("We have some internal problems, please try again later..."));
+        return close();
+
     };
     return (
         <Dialog
