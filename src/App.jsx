@@ -1,6 +1,6 @@
 import React from "react";
 import Template from "./components/Template";
-import {HashRouter,BrowserRouter as Router,Route, Switch} from "react-router-dom";
+import {BrowserRouter as Router,Route, Switch} from "react-router-dom";
 import Home from "./routes/home";
 
 import Lost from "./routes/notfound"
@@ -8,7 +8,6 @@ import "./App.less";
 
 const App = () => {
     return (
-        <HashRouter>
         <Router>
         <Template>
             <Switch>
@@ -18,7 +17,6 @@ const App = () => {
             </Switch>
         </Template>
         </Router>
-        </HashRouter>
     );
 }
 
