@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "./navbar";
+
 const Template = (props) => {
     return (
     <>
