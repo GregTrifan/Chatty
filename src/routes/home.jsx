@@ -16,10 +16,7 @@ const Home = () => {
       return setInvalid(true);
     }
     return (
-    <>
-    <Heading size={900} margin="default">
-    Home
-    </Heading>
+
     <motion.div
     initial={{ opacity:0 }}
     animate={{ opacity:1 }}
@@ -64,7 +61,6 @@ const Home = () => {
      </Pane>)
    })}
    </motion.div>
-    </>
     );
 }
 
