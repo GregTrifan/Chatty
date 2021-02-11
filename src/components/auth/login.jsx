@@ -1,16 +1,27 @@
 import React,{useState} from "react";
-import {Dialog,TextInputField} from "evergreen-ui";
+import {Dialog,TextInputField,toaster} from "evergreen-ui";
 const Login = ({stats,close}) => {
     const [username,setUsername] = useState("");
     const [passwd,setPasswd] = useState("");
     const cleanVars=() => {
         setUsername("");setPasswd("");
     }
+    const submitData = () => {
+        if (passwd.length<6 || username.length<3) {
+            if(passwd.length<6) {toaster.danger("The password must be at least 6 characters");}
+            if(username.length<3) {toaster.danger("The Username must be at least 3 characters");}
+            if(passwd.length<6 && username.length<3) {
+                toaster.danger("Both the Username and Password are too short");
+            }
+            return;
+        }
+    };
     return (
     <Dialog
     isShown={stats}
     title="Login"
     destroyOnClose={true}
+    onConfirm = {submitData}
     onCloseComplete={()=> {close();cleanVars()}}
     confirmLabel="Login"
     >
