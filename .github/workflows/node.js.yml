@@ -28,10 +28,3 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
     - run: npm run build
-      
-    - name: Lines of Code Badge
-      uses: shadowmoose/GHA-LoC-Badge@1.0.0
-      with:
-      # The directory to scan.
-        directory: ./
-        badge: ./badge.svg
