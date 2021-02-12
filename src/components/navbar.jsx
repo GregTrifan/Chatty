@@ -8,6 +8,7 @@ import {Menu,
     LogOutIcon,
     LogInIcon,
     AddIcon,
+    Heading
     } from "evergreen-ui";
 import {NavLink} from "react-router-dom";
 import {motion} from "framer-motion";
@@ -18,9 +19,11 @@ import Logout from "./auth/logout";
 
 import Logo from "../img/logo.png";
 import "./navbar.less";
+import randomGreet from "../misc/random-greet";
 
 const Navbar =  () => {
-  const user = localStorage.getItem('statsUser');
+  const user = JSON.parse(sessionStorage.getItem('currentUser'));
+  console.log(user);
   const [logout,setLogout]=useState(false);
   const [login,setLogin]=useState(false);
   const [register,setRegister]=useState(false);
@@ -46,10 +49,11 @@ const Navbar =  () => {
           <NavLink to="/">
       <Menu.Item icon={HomeIcon}>Home</Menu.Item>
       </NavLink>
+      <Menu.Group title={user?randomGreet(user.username):randomGreet("Guest")}>
       {user?
       <>
       <Menu.Divider/>
-      <Menu.Item icon={LogOutIcon} intent="danger">Logout</Menu.Item>
+      <Menu.Item icon={LogOutIcon} onSelect={()=>setLogout(true)} intent="danger">Logout</Menu.Item>
       </>
       :
       <>
@@ -57,6 +61,7 @@ const Navbar =  () => {
       <Menu.Item icon={AddIcon} onSelect={()=>setRegister(true)}>Register</Menu.Item>
       </>
       }
+      </Menu.Group>
       </Menu.Group>
     </Menu>
   }

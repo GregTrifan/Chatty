@@ -8,5 +8,5 @@ module.exports = {
     ],"@snowpack/plugin-dotenv"],
     "routes": [
         {"match": "routes", "src": ".*", "dest": "/index.html"}
-    ]
+    ],
 }

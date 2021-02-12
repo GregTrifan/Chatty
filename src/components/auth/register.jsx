@@ -6,10 +6,16 @@ const Register = ({stats,close}) => {
     const [username,setUsername] = useState("");
     const [passwd,setPasswd] = useState("");
     const [check,setCheck] = useState("");
+    const [submitted,setSubmit] = useState(false);
+    
     const cleanVars=() => {
-        setUsername("");setPasswd("");setCheck("");
+        setUsername("");setPasswd("");setCheck("");setSubmit(false);
     }
+
     const submitData = () => {
+        setSubmit(true);
+        if (username.toLowerCase()==="guest") 
+            return toaster.warning("Cmon, why would you use such a name 🤨 ?")
         if (check!==passwd) {
             return toaster.danger("The passwords aren't the same!");
         }
@@ -21,12 +27,14 @@ const Register = ({stats,close}) => {
             }
             return;
         }
-        const res = createUser({username:username,passwd:passwd})
-        .then(()=>toaster.success(`Account created sucessfully ${username}!!`))
-        .catch(() => toaster.danger("We have some internal problems, please try again later..."));
+        createUser({username:username,passwd:passwd})
+        .then(()=>toaster.success(`Account created sucessfully ${username} 🥳🥳!!`))
+        .catch(() => toaster.danger("We have some internal problems 🤒, please try again later..."));
         return close();
 
     };
+
+
     return (
         <Dialog
     isShown={stats}
@@ -41,18 +49,18 @@ const Register = ({stats,close}) => {
         <TextInputField
         label="Username"
         name="username"
-        isInvalid={username===""}
+        isInvalid={submitted&&username===""}
         onChange={e => setUsername(e.target.value)}
         placeholder="example34"
-        validationMessage={username===""?"This field is required":null}
+        validationMessage={submitted&&username===""?"This field is Required":null}
         />
         <TextInputField
         label="Your Password"
         name="password"
         type="password"
-        isInvalid={passwd===""}
+        isInvalid={submitted&&passwd===""}
         onChange={e => setPasswd(e.target.value)}
-        validationMessage={passwd===""?"This field is required":null}
+        validationMessage={submitted&&passwd===""?"This field is Required":null}
         placeholder="A_S3crET"
         />
         <TextInputField
