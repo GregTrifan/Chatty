@@ -6,5 +6,5 @@ This app uses FaunaDB, along with React to create a *seamless* experience
 
 
 ## Donate
-**ETH/ERC20:** 0x2BA30F26B0D163cDFEEA21B9eaC8f82f1Afaa021
+**ETH/ERC20:** 0x2BA30F26B0D163cDFEEA21B9eaC8f82f1Afaa021  
 **BTC:** bc1qny2seeeezt84xrl8znr6nvxt2l4nlh6lfzzp0v 
