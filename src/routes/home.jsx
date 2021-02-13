@@ -5,12 +5,28 @@ import React, {useState} from "react";
 
 
 const Home = () => {
-    const [content,setContent] = useState([]);
+    console.log(localStorage.getItem("Notes"))
+    const Hardened = localStorage.getItem("Notes")===null?[]:JSON.parse(localStorage.getItem("Notes"));
+    const [content,setContent]=useState(Hardened);
     const [invalid,setInvalid] = useState(false);
     const [msg,setMsg] = useState([]);
-    const sendMessage = () => {
+
+    const deleteNote = (index) => {
+      console.log(content.length);
+      if (content.length==1) {
+        setContent([]);
+        return localStorage.setItem("Notes",JSON.stringify([]));
+      }
+      setContent(content.filter(
+        (elem)=> index !== content.indexOf(elem) 
+      ));
+      console.log(content,index);
+      localStorage.setItem("Notes",JSON.stringify(content));
+    }
+    const sendNote = () => {
       if (msg!=""&&msg!=undefined) {
         setContent([...content,{content:msg,time:Date.now()}]);
+        localStorage.setItem("Notes",JSON.stringify(content));
         setInvalid(false);
         return setMsg("");
       }
@@ -31,20 +47,20 @@ const Home = () => {
       alignItems="center"
       padding="20px"
       >
-    <Heading margin="default" size={800} color="#05558C" className="cursive">Send a Message</Heading>
+    <Heading margin="default" size={800} color="#05558C" className="cursive">Store Notes</Heading>
     <TextInputField
     isInvalid={invalid}
     value={msg}
     onChange={(e) => setMsg(e.target.value)}
-    label="Send a message"
+    label="Write a Note"
     textAlign="left"
-    name="msg"
-    placeholder="Message contents"
+    name="note"
+    placeholder="Note contents"
     validationMessage={invalid?"This field is required":null}
    />
-   <Button onClick={() => sendMessage()} appearance="primary" >Send Message</Button>
+   <Button onClick={() => sendNote()} appearance="primary" >Store Note</Button>
    </Pane>
-   <Heading>Received Messages</Heading>
+   <Heading textAlign="left" paddingLeft="22px">Stored Notes</Heading>
 
    {content.map(({content,time},index) => {
      return (
@@ -58,13 +74,14 @@ const Home = () => {
      border
      margin={14}
      borderRadius="13px"
-     padding="13px"
+     padding="16px"
      textAlign="left"
      >
-    <Heading>Sent at {moment(time).format("MMM Do YY")}</Heading>
-    <Tooltip content={moment(time).format('LTS')}>
+    <Heading>#{index+1}</Heading>
+    <Tooltip content={`${moment(time).format("MMM Do YY")} at ${moment(time).format('LTS')}`}>
      <Text>{content}</Text>
      </Tooltip>
+     <Button appearance="primary" onClick={()=>deleteNote(index)} intent="danger" style={{float:"right"}}>Delete note</Button>
      </Pane>
      </motion.div>
      )

@@ -5,6 +5,7 @@ import Home from "./routes/home";
 
 import Lost from "./routes/notfound"
 import "./App.less";
+import { General } from "./routes/general";
 
 const App = () => {
     return (
@@ -13,6 +14,7 @@ const App = () => {
             <Switch>
                 <Route exact path='/' component={Home} />
                 <Route exact path='/404' component={Lost}/>
+                <Route exact path="/general-chat" component={General}/>
                 <Route component={Lost}/>
             </Switch>
         </Template>

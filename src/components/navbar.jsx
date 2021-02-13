@@ -8,6 +8,7 @@ import {Menu,
     LogOutIcon,
     LogInIcon,
     AddIcon,
+    CommentIcon,
     Heading
     } from "evergreen-ui";
 import {NavLink} from "react-router-dom";
@@ -53,6 +54,9 @@ const Navbar =  () => {
       {user?
       <>
       <Menu.Divider/>
+      <NavLink to="/general-chat">
+      <Menu.Item icon={CommentIcon} intent="success" disabled>General Chat</Menu.Item>
+      </NavLink>
       <Menu.Item icon={LogOutIcon} onSelect={()=>setLogout(true)} intent="danger">Logout</Menu.Item>
       </>
       :
