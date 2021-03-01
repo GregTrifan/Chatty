@@ -55,7 +55,7 @@ const Navbar =  () => {
       <>
       <Menu.Divider/>
       <NavLink to="/general-chat">
-      <Menu.Item icon={CommentIcon} intent="success" disabled>General Chat</Menu.Item>
+      <Menu.Item icon={CommentIcon} intent="success" >General Chat</Menu.Item>
       </NavLink>
       <Menu.Item icon={LogOutIcon} onSelect={()=>setLogout(true)} intent="danger">Logout</Menu.Item>
       </>
@@ -78,4 +78,4 @@ const Navbar =  () => {
 </nav>
     );
 }
-export default Navbar
+export default Navbar;

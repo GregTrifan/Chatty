@@ -5,7 +5,7 @@ const Template = (props) => {
     return (
     <>
     <Navbar/>
-    <div style={{textAlign:"center",padding:"20px"}}>
+    <div>
     {props.children}
     </div>
     </>
